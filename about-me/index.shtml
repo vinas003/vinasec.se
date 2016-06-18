@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!-- This page is in english-->
+<html lang="en">
+
+  <head>
+
+    <!-- Include our default head content -->
+    <!--#include virtual="/templates/head.html" -->
+
+    <!-- Set the title -->
+    <title> ViNaSec.se - About me</title>
+
+    <!-- Set the description for the page -->
+    <meta name="description" content="About Victor Näslund">
+
+    <!-- Set keywords for search engines for the page -->
+    <meta name="keywords" content="Victor,Näslund,Victor Näslund,about">
+
+    <!-- Load our home page CSS stylesheet -->
+    <link rel="stylesheet" href="/css/about-me-page.css?v=1">
+
+  </head>
+
+  <body>
+
+    <!-- div that wraps around the entire page -->
+    <div id="wrapper">
+
+      <!-- Include our default header content -->
+      <!--#include virtual="/templates/header.html" -->
+
+      <div id="core" class="clearfix">
+
+        <section id="left">
+
+	  <!--#include virtual="/about-me/recent-posts.html" -->
+
+        </section>
+        
+        <section id="right">
+
+	  <!--#include virtual="/about-me/archive.html" -->
+
+        </section>
+
+      </div>
+      
+      <footer>
+
+	<!--#include virtual="/templates/footer.html" -->
+
+      </footer>
+
+    </div>
+    
+  </body>
+
+</html>
+

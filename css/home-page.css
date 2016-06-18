@@ -1,0 +1,8 @@
+
+nav ul li a#home-page {
+    background-color: #999999;
+}
+
+nav ul li a#home-page:hover {
+    background-color: #5a87dd;
+}

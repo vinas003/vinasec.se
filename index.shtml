@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<!-- This page is in english-->
+<html lang="en">
+
+  <head>
+
+    <!-- Include our default head content -->
+    <!--#include virtual="/templates/head.html" -->
+
+    <!-- Set the title -->
+    <title> ViNaSec.se</title>
+
+    <!-- Need this for google to verify we own this page, only needed on the absolut top page for the site -->
+    <meta name="google-site-verification" content="kP1VJdnnUlyn-dfQdT9Kf_qZIw0H3yFePuguSy79qgs">
+
+    <!-- Set the description for the page -->
+    <meta name="description" content="My site mostly about Linux and IT security">
+
+    <!-- Set keywords for search engines for the page -->
+    <meta name="keywords" content="Victor,Näslund,Linux,IT,Security">
+
+    <!-- Load our home page CSS stylesheet -->
+    <link rel="stylesheet" href="/css/home-page.css?v=1">
+
+  </head>
+
+  <body>
+
+    <!-- div that wraps around the entire page -->
+    <div id="wrapper">
+
+      <!-- Include our default header content -->
+      <!--#include virtual="/templates/header.html" -->
+
+      <div id="core" class="clearfix">
+
+        <section id="left">
+
+	  <!--#include virtual="/home/recent-posts.html" -->
+
+        </section>
+        
+        <section id="right">
+
+	  <!--#include virtual="/home/archive.html" -->
+
+        </section>
+
+      </div>
+      
+      <footer>
+
+	<!--#include virtual="/templates/footer.html" -->
+
+      </footer>
+
+    </div>
+    
+  </body>
+
+</html>
+
