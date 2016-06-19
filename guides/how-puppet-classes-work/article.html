@@ -1,0 +1,35 @@
+<article>
+
+  <h2>How puppet classes work?</h2>
+  <p>Lets start with the basics, in the classes we can declare <span class="text-bold-purple">packages</span> and <span class="text-bold-purple">services</span>.</p>
+    
+  <p><span class="text-bold-purple">Packages</span> can be declared to be installed, removed and ensured to be the latest version among many things</p>
+  <p><span class="text-bold-purple">Services</span> can be though of like the systemd services. It basically allow us to state which programs should be running.</p>
+  <p>Consider this puppet class example:</p>
+    
+  <pre><code>
+<span class="text-pink">class</span> <span class="text-blue">web</span> {
+
+  <span class="text-green">package</span> { [<span class="text-purple">'httpd'</span>, <span class="text-purple">'mod_ssl'</span>]:
+    ensure => installed,
+  }
+
+  <span class="text-green">service</span> {<span class="text-purple">'httpd'</span>:
+    ensure  => running,
+    enable  => true,
+    require => <span class="text-green">Package</span>[<span class="text-purple">'httpd'</span>],
+  }
+}
+  </code></pre>
+  
+  <p>Here we have a class called web. It declares that the packages <span class="text-purple">httpd</span> and <span class="text-purple">mod_ssl</span> should be installed.<br>
+    They will be installed using the OS package system, in our case yum. Everytime puppet runs it will call yum to install the packages should they not be installed.</p>
+
+  <p>Next we see the class want the service <span class="text-purple">httpd</span> to be running and be enabled which means start at boot.<br>
+    This service also require the package <span class="text-purple">httpd</span> to be installed before puppet executes this block. This means puppet will first install <span class="text-purple">httpd</span> before trying to start it.
+</p>
+
+  <p> We can also declare files like this:<br>
+    Under construction </p>
+</article>
+

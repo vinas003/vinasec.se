@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!-- This page is in english-->
+<html lang="en">
+
+  <head>
+
+    <!-- Include our default head content -->
+    <!--#include virtual="/templates/head.html" -->
+
+    <!-- Set the title -->
+    <title> ViNaSec.se - Sourcecode</title>
+
+    <!-- Set the description for the page -->
+    <meta name="description" content="Sourcecodes for Linux and IT security">
+
+    <!-- Set keywords for search engines for the page -->
+    <meta name="keywords" content="Victor,Näslund,Linux,IT,Security,Source,Code">
+
+    <!-- Load our home page CSS stylesheet -->
+    <link rel="stylesheet" href="/css/source-code-page.css?v=1">
+
+  </head>
+
+  <body>
+
+    <!-- div that wraps around the entire page -->
+    <div id="wrapper">
+
+      <!-- Include our default header content -->
+      <!--#include virtual="/templates/header.html" -->
+
+      <div id="core" class="clearfix">
+
+        <section id="left">
+
+	  <!--#include virtual="/source-code/recent-posts.html" -->
+
+        </section>
+        
+        <section id="right">
+
+	  <!--#include virtual="/source-code/archive.html" -->
+
+        </section>
+
+      </div>
+      
+      <footer>
+
+	<!--#include virtual="/templates/footer.html" -->
+
+      </footer>
+
+    </div>
+    
+  </body>
+
+</html>
+

@@ -23,6 +23,18 @@
     <!-- Load our home page CSS stylesheet -->
     <link rel="stylesheet" href="/css/home-page.css?v=1">
 
+    <!-- Include required JS files -->
+
+<!--     
+    <script type="text/javascript" src="/js/shCore.js"></script>
+
+    <script type="text/javascript" src="/js/shBrushBash.js"></script>
+
+    
+    <link rel="stylesheet" href="/css/shCore.css?v=1">
+
+    <link rel="stylesheet" href="/css/shThemeDefault.css?v=1">
+-->
   </head>
 
   <body>
