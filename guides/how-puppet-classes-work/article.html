@@ -1,10 +1,10 @@
 <article>
 
   <h2>How puppet classes work?</h2>
-  <p>Lets start with the basics, in the classes we can declare <span class="text-bold-purple">packages</span> and <span class="text-bold-purple">services</span>.</p>
+  <p>Lets start with the basics, in the classes we can declare <span class="text-bold-green">packages</span> and <span class="text-bold-green">services</span>.</p>
     
-  <p><span class="text-bold-purple">Packages</span> can be declared to be installed, removed and ensured to be the latest version among many things</p>
-  <p><span class="text-bold-purple">Services</span> can be though of like the systemd services. It basically allow us to state which programs should be running.</p>
+  <p><span class="text-bold-green">Packages</span> can be declared to be installed, removed and ensured to be the latest version among many things</p>
+  <p><span class="text-bold-green">Services</span> basically allow us to state which programs should be running.</p>
   <p>Consider this puppet class example:</p>
     
   <pre><code>
@@ -25,11 +25,33 @@
   <p>Here we have a class called web. It declares that the packages <span class="text-purple">httpd</span> and <span class="text-purple">mod_ssl</span> should be installed.<br>
     They will be installed using the OS package system, in our case yum. Everytime puppet runs it will call yum to install the packages should they not be installed.</p>
 
-  <p>Next we see the class want the service <span class="text-purple">httpd</span> to be running and be enabled which means start at boot.<br>
-    This service also require the package <span class="text-purple">httpd</span> to be installed before puppet executes this block. This means puppet will first install <span class="text-purple">httpd</span> before trying to start it.
+  <p>Next we see the class want the service <span class="text-purple">httpd</span> to be running and be enabled which means start at boot.<br> 
+    Services can be though to be connected to the OS service managment, in our case systemd.<br>
+    This service require the package <span class="text-purple">httpd</span> to be installed before puppet executes this block. This means puppet will first install <span class="text-purple">httpd</span> before trying to start it using systemd.
 </p>
 
-  <p> We can also declare files like this:<br>
-    Under construction </p>
+  <p><span class="text-bold-green">Files</span> can be declared like this:</p>
+
+  <pre><code>
+  <span class="text-green">file</span> { <span class="text-purple">'/etc/httpd/conf.d/ssl.conf'</span>:
+    owner    => root,
+    group    => root,
+    mode     => 644,
+    notify   => <span class="text-green">Service</span>[<span class="text-purple">'httpd'</span>],
+    content  => <span class="text-green">file</span>(<span class="text-purple">'web/ssl.conf'</span>),
+  }
+
+  </code></pre>
+
+  <p>Here we have declared that the file <span class="text-purple">'/etc/httpd/conf.d/ssl.conf'</span> will have root as owner and group with permissions 644.<br>
+    We see that should this file change, the next time puppet runs it will notify the service <span class="text-purple">httpd</span>. This means <span class="text-purple">httpd</span> will usually means restart the service.<br>
+    <br>
+    Lastly but most importantly we say that this file should be a copy of the file <span class="text-purple">'web/ssl.conf'</span> which means the file called <span class="text-purple">'ssl.conf</span> located in the <span class="text-blue">web</span> class.<br>
+    Since this is a file it will exist in the directory called <span class="text-purple">'files'</span> in the <span class="text-blue">'web'</span> class directory. <br>
+    <br>
+    So everytime we edit the file in <span class="text-purple">'web/ssl.conf'</span> on the puppetmaster, the next time puppet run it will put that file at <span class="text-purple">'/etc/httpd/conf.d/ssl.conf'</span> on all puppet clients who have the <span class="text-blue">web</span> class assigned to them and then restart <span class="text-purple">httpd</span><br>
+    <br>
+    So the more puppet clients with the <span class="text-blue">web</span> class you have the more time you will save.</p>
+
 </article>
 
