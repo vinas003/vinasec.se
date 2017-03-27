@@ -38,8 +38,37 @@
   </head>
 
   <body>
-    <p>Under Construction</p>
+
+    <!-- div that wraps around the entire page -->
+    <div id="wrapper">
+
+      <!-- Include our default header content -->
+      <!--#include virtual="/templates/header.html" -->
+
+      <div id="core" class="clearfix">
+
+        <section id="left">
+
+	  <!--#include virtual="/home/recent-posts.html" -->
+
+        </section>
+        
+        <section id="right">
+
+	  <!--#include virtual="/home/archive.html" -->
+
+        </section>
+
+      </div>
       
+      <footer>
+
+	<!--#include virtual="/templates/footer.html" -->
+
+      </footer>
+
+    </div>
+    
   </body>
 
 </html>
